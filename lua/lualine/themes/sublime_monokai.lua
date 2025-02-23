@@ -5,7 +5,7 @@ local dark = {
   green    = "#A6E22E", -- Monokai green
   red      = "#F92672", -- Monokai red
   purple   = "#AE81FF", -- Monokai purple
-  blue     = "#66D9EF", -- Monokai blue
+  yellow   = "#E6DB74", -- Monokai yellow
   blueDark = "#3E8EDE", -- Darker blue
   grey3    = "#383830", -- Darker grey
   grey5    = "#49483E", -- Slightly lighter grey
@@ -20,7 +20,7 @@ local light = {
   green    = "#A6E22E", -- Monokai green
   red      = "#F92672", -- Monokai red
   purple   = "#AE81FF", -- Monokai purple
-  blue     = "#66D9EF", -- Monokai blue
+  yellow   = "#C18401", -- Monokai yellow
   blueDark = "#3E8EDE", -- Darker blue
   grey3    = "#E8E8E5", -- Light grey for sections
   grey5    = "#E0E0DC", -- Slightly darker light grey
@@ -36,7 +36,7 @@ end
 
 return {
   normal = {
-    a = { bg = t.blue, fg = t.bg, gui = "bold" },
+    a = { bg = t.yellow, fg = t.bg, gui = "bold" },
     b = { bg = t.grey7, fg = t.fg },
     c = { bg = t.grey3, fg = t.fg }
   },
