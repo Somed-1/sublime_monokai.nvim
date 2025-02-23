@@ -22,10 +22,10 @@ local light = {
   purple   = "#AE81FF", -- Monokai purple
   yellow   = "#C18401", -- Monokai yellow
   blueDark = "#3E8EDE", -- Darker blue
-  grey3    = "#E8E8E5", -- Light grey for sections
-  grey5    = "#E0E0DC", -- Slightly darker light grey
-  grey7    = "#D6D6D2", -- For status lines
-  grey20   = "#B0B0AA", -- Dimmed text
+  grey3    = "#383830", -- Darker grey
+  grey5    = "#49483E", -- Slightly lighter grey
+  grey7    = "#75715E", -- Comment grey
+  grey20   = "#4D4D4D", -- Muted grey
 }
 
 local t = dark
