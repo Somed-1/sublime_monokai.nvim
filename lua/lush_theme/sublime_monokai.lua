@@ -344,7 +344,7 @@ local theme = lush(function(injected_functions)
     CursorLine({ bg = t.grey3 }),                                    -- Current line highlight
     CursorColumn({ CursorLine }),                                    -- Current column highlight
 
-    StatusLine({ bg = t.dark25, gui = "" }),                         -- Active status line styling
+    StatusLine({ bg = t.dark25, fg = t.fg, gui = "" }),                         -- Active status line styling
     StatusLineNC({ bg = t.dark25 }),                                 -- Inactive status line styling
 
     TabLine({ bg = t.shade3, fg = t.shade30 }),                      -- tab pages line, not active tab page label
@@ -1149,3 +1149,4 @@ local theme = lush(function(injected_functions)
 end)
 
 return theme
+

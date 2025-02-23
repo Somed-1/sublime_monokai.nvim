@@ -69,7 +69,7 @@ return {
   inactive = {
     a = { bg = t.grey20, fg = t.grey3 },
     b = { bg = t.grey5, fg = t.grey20 },
-    c = { bg = t.grey5, fg = t.grey20 }
+    c = { bg = t.grey5, fg = t.fg }
   },
   terminal = {
     a = { bg = t.cyan, fg = t.fg, gui = "bold" },
