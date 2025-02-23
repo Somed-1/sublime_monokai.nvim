@@ -344,8 +344,8 @@ local theme = lush(function(injected_functions)
     CursorLine({ bg = t.grey3 }),                                    -- Current line highlight
     CursorColumn({ CursorLine }),                                    -- Current column highlight
 
-    StatusLine({ bg = t.dark25, fg = t.fg, gui = "" }),                         -- Active status line styling
-    StatusLineNC({ bg = t.dark25 }),                                 -- Inactive status line styling
+    StatusLine({ bg = t.dark25, gui = "" }),                         -- Active status line styling
+    StatusLineNC({ bg = t.dark25, fg = t.fg }),                                 -- Inactive status line styling
 
     TabLine({ bg = t.shade3, fg = t.shade30 }),                      -- tab pages line, not active tab page label
     TabLineFill({ bg = t.dark25 }),                                  -- tab pages line, where there are no labels
@@ -1145,8 +1145,13 @@ local theme = lush(function(injected_functions)
     CopilotSuggestion { fg = t.copilot.mix(t.bg, 20) },
     CopilotAnnotation { fg = t.copilot.mix(t.primary, 50).mix(t.bg, 30) },
 
+    -- alpha-nvim
+    AlphaHeader { fg = t.string },
+    AlphaButtons { fg = t.constant },
+    AlphaShortcut { fg = t.primary },
+    AlphaFooter { fg = t.constant },
+    AlphaComment { fg = t.parameter },
   }
 end)
 
 return theme
-
