@@ -14,18 +14,18 @@ local dark = {
 }
 
 local light = {
-  bg       = "#FFFFFF", -- Pure white background
-  fg       = "#272822", -- Dark foreground
-  normalFG = "#272822", -- Main text
-  green    = "#86B300", -- Softer green
-  red      = "#FF5F5F", -- Brighter red
-  purple   = "#9E86C8", -- Muted purple
-  yellow   = "#E4BF7A", -- Softer yellow
-  blueDark = "#3A8EDB", -- Calm blue
-  grey3    = "#E5E5E5", -- Light grey
-  grey5    = "#D4D4D4", -- Medium grey
-  grey7    = "#B0B0B0", -- Comment grey
-  grey20   = "#999999", -- Muted grey
+  bg       = "#272822", -- Monokai dark background
+  fg       = "#F8F8F2", -- Light foreground
+  normalFG = "#F8F8F2", -- Main text
+  green    = "#A6E22E", -- Monokai green
+  red      = "#F92672", -- Monokai red
+  purple   = "#AE81FF", -- Monokai purple
+  yellow   = "#E6DB74", -- Monokai yellow
+  blueDark = "#3E8EDE", -- Darker blue
+  grey3    = "#383830", -- Darker grey
+  grey5    = "#49483E", -- Slightly lighter grey
+  grey7    = "#75715E", -- Comment grey
+  grey20   = "#4D4D4D", -- Muted grey
 }
 
 local t = dark
