@@ -1172,6 +1172,13 @@ local theme = lush(function(injected_functions)
     MiniStarterItemPrefix { fg = t.yellow },
     MiniStarterQuery { fg = t.cyan },
     MiniStarterSection { fg = t.pink },
+
+    DashboardHeader { fg = t.string },
+    DashboardButtons { fg = t.constant },
+    DashboardCenter { fg = t.type },
+    DashboardShortcut { fg = t.constant },
+    DashboardFooter { fg = t.keyword },
+    DashboardComment { fg = t.parameter },
   }
 end)
 
