@@ -36,27 +36,27 @@ end
 
 return {
   normal = {
-    a = { bg = t.yellow, fg = t.bg, gui = "bold" },
+    a = { bg = t.yellow, fg = t.fg, gui = "bold" },
     b = { bg = t.grey7, fg = t.fg },
     c = { bg = t.grey3, fg = t.fg }
   },
   insert = {
-    a = { bg = t.blueDark, fg = t.bg, gui = "bold" },
+    a = { bg = t.blueDark, fg = t.fg, gui = "bold" },
     b = { bg = t.grey7, fg = t.blueDark },
     c = { bg = t.grey3, fg = t.fg }
   },
   visual = {
-    a = { bg = t.purple, fg = t.bg, gui = "bold" },
+    a = { bg = t.purple, fg = t.fg, gui = "bold" },
     b = { bg = t.grey7, fg = t.purple },
     c = { bg = t.grey3, fg = t.fg }
   },
   replace = {
-    a = { bg = t.red, fg = t.bg, gui = "bold" },
+    a = { bg = t.red, fg = t.fg, gui = "bold" },
     b = { bg = t.grey7, fg = t.red },
     c = { bg = t.grey3, fg = t.fg }
   },
   command = {
-    a = { bg = t.green, fg = t.bg, gui = "bold" },
+    a = { bg = t.green, fg = t.fg, gui = "bold" },
     b = { bg = t.grey7, fg = t.green },
     c = { bg = t.grey3, fg = t.fg }
   },
