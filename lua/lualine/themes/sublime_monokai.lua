@@ -5,7 +5,7 @@ local dark = {
   green    = "#A6E22E", -- Monokai green
   red      = "#F92672", -- Monokai red
   purple   = "#AE81FF", -- Monokai purple
-  yellow   = "#E6DB74", -- Monokai yellow
+  blue     = "#66D9EF", -- Monokai blue
   blueDark = "#3E8EDE", -- Darker blue
   grey3    = "#383830", -- Darker grey
   grey5    = "#49483E", -- Slightly lighter grey
@@ -14,18 +14,18 @@ local dark = {
 }
 
 local light = {
-  bg       = "#FFFFFF", -- Pure white background
+  bg       = "#F8F8F2", -- Monokai light background
   fg       = "#272822", -- Dark foreground
   normalFG = "#272822", -- Main text
-  green    = "#86B300", -- Softer green
-  red      = "#FF5F5F", -- Brighter red
-  purple   = "#9E86C8", -- Muted purple
-  yellow   = "#E4BF7A", -- Softer yellow
-  blueDark = "#3A8EDB", -- Calm blue
-  grey3    = "#E5E5E5", -- Light grey
-  grey5    = "#D4D4D4", -- Medium grey
-  grey7    = "#B0B0B0", -- Comment grey
-  grey20   = "#999999", -- Muted grey
+  green    = "#A6E22E", -- Monokai green
+  red      = "#F92672", -- Monokai red
+  purple   = "#AE81FF", -- Monokai purple
+  blue     = "#66D9EF", -- Monokai blue
+  blueDark = "#3E8EDE", -- Darker blue
+  grey3    = "#E8E8E5", -- Light grey for sections
+  grey5    = "#E0E0DC", -- Slightly darker light grey
+  grey7    = "#D6D6D2", -- For status lines
+  grey20   = "#B0B0AA", -- Dimmed text
 }
 
 local t = dark
@@ -36,27 +36,27 @@ end
 
 return {
   normal = {
-    a = { bg = t.yellow, fg = t.fg, gui = "bold" },
+    a = { bg = t.blue, fg = t.bg, gui = "bold" },
     b = { bg = t.grey7, fg = t.fg },
     c = { bg = t.grey3, fg = t.fg }
   },
   insert = {
-    a = { bg = t.blueDark, fg = t.fg, gui = "bold" },
+    a = { bg = t.blueDark, fg = t.bg, gui = "bold" },
     b = { bg = t.grey7, fg = t.blueDark },
     c = { bg = t.grey3, fg = t.fg }
   },
   visual = {
-    a = { bg = t.purple, fg = t.fg, gui = "bold" },
+    a = { bg = t.purple, fg = t.bg, gui = "bold" },
     b = { bg = t.grey7, fg = t.purple },
     c = { bg = t.grey3, fg = t.fg }
   },
   replace = {
-    a = { bg = t.red, fg = t.fg, gui = "bold" },
+    a = { bg = t.red, fg = t.bg, gui = "bold" },
     b = { bg = t.grey7, fg = t.red },
     c = { bg = t.grey3, fg = t.fg }
   },
   command = {
-    a = { bg = t.green, fg = t.fg, gui = "bold" },
+    a = { bg = t.green, fg = t.bg, gui = "bold" },
     b = { bg = t.grey7, fg = t.green },
     c = { bg = t.grey3, fg = t.fg }
   },
