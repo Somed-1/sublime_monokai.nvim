@@ -25,9 +25,9 @@ function M.setup(options)
 end
 
 function M.load()
-  local theme = require('lush_theme.bluloco')
-  vim.g.colors_name = 'bluloco'
-  package.loaded['lush_theme.bluloco'] = nil
+  local theme = require('lush_theme.sublime_monokai')
+  vim.g.colors_name = 'sublime_monokai'
+  package.loaded['lush_theme.sublime_monokai'] = nil
 
   -- transparent
   if (M.config.transparent == true and not isGui) then
