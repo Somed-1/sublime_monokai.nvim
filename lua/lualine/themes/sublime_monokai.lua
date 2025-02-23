@@ -41,46 +41,46 @@ if (vim.o.background == "light") then
 end
 
 return {
-  -- normal = {
-  --   a = { bg = t.yellow, fg = t.fg, gui = "bold" },
-  --   b = { bg = t.grey7, fg = t.fg },
-  --   c = { bg = t.grey3, fg = t.fg }
-  -- },
-  -- insert = {
-  --   a = { bg = t.blueDark, fg = t.fg, gui = "bold" },
-  --   b = { bg = t.grey7, fg = t.blueDark },
-  --   c = { bg = t.grey3, fg = t.fg }
-  -- },
-  -- visual = {
-  --   a = { bg = t.purple, fg = t.fg, gui = "bold" },
-  --   b = { bg = t.grey7, fg = t.purple },
-  --   c = { bg = t.grey3, fg = t.fg }
-  -- },
-  -- replace = {
-  --   a = { bg = t.red, fg = t.fg, gui = "bold" },
-  --   b = { bg = t.grey7, fg = t.red },
-  --   c = { bg = t.grey3, fg = t.fg }
-  -- },
-  -- command = {
-  --   a = { bg = t.green, fg = t.fg, gui = "bold" },
-  --   b = { bg = t.grey7, fg = t.green },
-  --   c = { bg = t.grey3, fg = t.fg }
-  -- },
-  -- inactive = {
-  --   a = { bg = t.grey20, fg = t.fg },
-  --   b = { bg = t.grey5, fg = t.fg },
-  --   c = { bg = t.grey5, fg = t.fg }
-  -- },
-  -- terminal = {
-  --   a = { bg = t.cyan, fg = t.fg, gui = "bold" },
-  --   b = { bg = t.grey7, fg = t.cyan },
-  --   c = { bg = t.grey3, fg = t.fg }
-  -- },
-  -- debug = {
-  --   a = { bg = t.orange, fg = t.fg, gui = "bold" },
-  --   b = { bg = t.grey7, fg = t.orange },
-  --   c = { bg = t.grey3, fg = t.fg }
-  -- },
-  -- separator = t.separator
+  normal = {
+    a = { bg = t.yellow, fg = t.fg, gui = "bold" },
+    b = { bg = t.grey7, fg = t.fg },
+    c = { bg = t.grey3, fg = t.fg }
+  },
+  insert = {
+    a = { bg = t.blueDark, fg = t.fg, gui = "bold" },
+    b = { bg = t.grey7, fg = t.blueDark },
+    c = { bg = t.grey3, fg = t.fg }
+  },
+  visual = {
+    a = { bg = t.purple, fg = t.fg, gui = "bold" },
+    b = { bg = t.grey7, fg = t.purple },
+    c = { bg = t.grey3, fg = t.fg }
+  },
+  replace = {
+    a = { bg = t.red, fg = t.fg, gui = "bold" },
+    b = { bg = t.grey7, fg = t.red },
+    c = { bg = t.grey3, fg = t.fg }
+  },
+  command = {
+    a = { bg = t.green, fg = t.fg, gui = "bold" },
+    b = { bg = t.grey7, fg = t.green },
+    c = { bg = t.grey3, fg = t.fg }
+  },
+  inactive = {
+    a = { bg = t.grey20, fg = t.fg },
+    b = { bg = t.grey5, fg = t.fg },
+    c = { bg = t.grey5, fg = t.fg }
+  },
+  terminal = {
+    a = { bg = t.cyan, fg = t.fg, gui = "bold" },
+    b = { bg = t.grey7, fg = t.cyan },
+    c = { bg = t.grey3, fg = t.fg }
+  },
+  debug = {
+    a = { bg = t.orange, fg = t.fg, gui = "bold" },
+    b = { bg = t.grey7, fg = t.orange },
+    c = { bg = t.grey3, fg = t.fg }
+  },
+  separator = t.separator
 }
 
