@@ -1145,12 +1145,33 @@ local theme = lush(function(injected_functions)
     CopilotSuggestion { fg = t.copilot.mix(t.bg, 20) },
     CopilotAnnotation { fg = t.copilot.mix(t.primary, 50).mix(t.bg, 30) },
 
+    -- StartifyBracket = { link = "GruvboxFg3" },
+    StartifyFile { fg = t.constant },
+    StartifyNumber { fg = t.constant },
+    StartifyPath { fg = t.keyword },
+    -- StartifySlash = { fg = t.primary },
+    -- StartifySection = { link = "GruvboxYellow" },
+    -- StartifySpecial = { link = "GruvboxBg2" },
+    StartifyHeader { fg = t.string },
+    StartifyFooter { fg = t.keyword },
+    StartifyVar { fg = t.primary },
+
     -- alpha-nvim
     AlphaHeader { fg = t.string },
     AlphaButtons { fg = t.constant },
     AlphaShortcut { fg = t.primary },
     AlphaFooter { fg = t.constant },
     AlphaComment { fg = t.parameter },
+
+    -- MiniStarterCurrent {},
+    MiniStarterFooter { fg = t.constant },
+    MiniStarterHeader { fg = t.string },
+    MiniStarterInactive { fg = t.comment },
+    MiniStarterItem { fg = t.fg },
+    MiniStarterItemBullet { fg = t.border },
+    MiniStarterItemPrefix { fg = t.yellow },
+    MiniStarterQuery { fg = t.cyan },
+    MiniStarterSection { fg = t.pink },
   }
 end)
 
