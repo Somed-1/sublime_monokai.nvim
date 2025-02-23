@@ -67,8 +67,8 @@ return {
     c = { bg = t.grey3, fg = t.fg }
   },
   inactive = {
-    a = { bg = t.grey20, fg = t.grey3 },
-    b = { bg = t.grey5, fg = t.grey20 },
+    a = { bg = t.grey20, fg = t.fg },
+    b = { bg = t.grey5, fg = t.fg },
     c = { bg = t.grey5, fg = t.fg }
   },
   terminal = {
