@@ -168,6 +168,8 @@ local function shade(color, value)
   end
 end
 
+-- t.bg = t.bg.mix(t.keyword,15)
+
 t.shade1 = shade(t.bg, 1)
 t.shade2 = shade(t.bg, 2)
 t.shade3 = shade(t.bg, 3)
@@ -215,8 +217,10 @@ t.dark25 = darker(t.bg, 25)
 t.dark30 = darker(t.bg, 30)
 t.dark40 = darker(t.bg, 40)
 
+
 -- t.white = hsl("#ffffff")
 -- t.green = hsl("#008200")
+
 
 -- -- terminal colors
 if (config.terminal == true) then
@@ -273,7 +277,7 @@ local theme = lush(function(injected_functions)
     Character({ fg = t.string }),   -- Character literals
     Constant({ fg = t.constant }),  -- Constant values
     Number({ fg = t.number }),      -- Numeric literals
-    Boolean({ fg = t.constant }),   -- Boolean values
+    Boolean({ fg = t.constant, gui = "bold" }),   -- Boolean values
     Identifier({ fg = t.fg }),      -- variable names
     Function({ fg = t.method }),    -- Function names
     Method({ fg = t.method }),      -- Method names
@@ -423,8 +427,8 @@ local theme = lush(function(injected_functions)
     sym("@annotation")({ sym("@label") }), -- Alias for labels
 
     -- ============================================================
-    sym("@type")({ Type, gui = "italic" }),
-    sym("@type.builtin")({ fg = t.type, gui = "italic" }),
+    sym("@type")({ Type }),
+    sym("@type.builtin")({ fg = t.type }),
     sym("@type.qualifier")({ Statement }),
 
     -- ============================================================
@@ -449,13 +453,13 @@ local theme = lush(function(injected_functions)
     sym("@text.underline")({ Underlined }),
     sym("@text.title")({ fg = t.keyword }),
     sym("@text.literal")({ Property }),
-    sym("@text.uri")({ fg = t.tag, sp = t.tag, gui = "underline" }), -- Any URI like a link or email
+    sym("@text.uri"){ fg = t.keyword, sp = t.tag, gui = "underline" }, -- Any URI like a link or email
 
     -- ============================================================
     sym("@variable")({ Identifier }), -- e.g. `this` or `self`
-    sym("@variable.parameter")({ fg = t.parameter, gui = "italic" }),
+    sym("@variable.parameter")({ fg = t.parameter }),
     sym("@variable.constant")({ Constant }),
-    sym("@variable.builtin")({ fg = t.parameter, gui = "italic" }),
+    sym("@variable.builtin")({ fg = t.parameter }),
 
     -- ============================================================
     sym("@tag")({ Tag }),
