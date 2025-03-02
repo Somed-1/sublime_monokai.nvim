@@ -49,13 +49,13 @@ function M.load()
     theme = lush.extends({ theme }).with(function(injected_functions)
       local sym = injected_functions.sym
       return {
-        -- Comment { theme.Comment, gui = "italic" },
-        -- sym("@type") { theme["@type"], gui = "italic" },
-        -- sym("@type.builtin") { theme["@type.builtin"], gui = "italic" },
-        -- sym("@field") { theme["@field"], gui = "italic" },
-        -- sym("@property") { theme["@property"], gui = "italic" },
-        -- sym("@variable.parameter") { theme["@variable"], gui = "italic" },
-        -- sym("@variable.builtin") { theme["@variable.builtin"], gui = "italic" },
+        Comment { theme.Comment, gui = "italic" },
+        sym("@type") { theme["@type"], gui = "italic" },
+        sym("@type.builtin") { theme["@type.builtin"], gui = "italic" },
+        sym("@field") { theme["@field"], gui = "italic" },
+        sym("@property") { theme["@property"], gui = "italic" },
+        sym("@variable.parameter") { theme["@variable.parameter"], gui = "italic" },
+        sym("@variable.builtin") { theme["@variable.builtin"], gui = "italic" },
       }
     end)
   end
