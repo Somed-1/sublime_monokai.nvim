@@ -17,11 +17,11 @@ M.config = defaultConfig
 function M.setup(options)
   M.config = vim.tbl_deep_extend("force", {}, defaultConfig, options or {})
 
-  -- Set cursor color
-  if M.config.guicursor then
-    vim.opt.guicursor = "n-v-c-sm:block-Cursor,i-ci-ve:ver25-Cursor,r-cr-o:hor20-Cursor"
-  end
-end
+--   -- Set cursor color
+--   if M.config.guicursor then
+--     vim.opt.guicursor = "n-v-c-sm:block-Cursor,i-ci-ve:ver25-Cursor,r-cr-o:hor20-Cursor"
+--   end
+-- end
 
 function M.load()
   local theme = require("lush_theme.sublime_monokai")
@@ -54,7 +54,7 @@ function M.load()
         sym("@type.builtin") { theme["@type.builtin"], gui = "italic" },
         sym("@field") { theme["@field"], gui = "italic" },
         sym("@property") { theme["@property"], gui = "italic" },
-        sym("@variable.parameter") { fg = t.parameter, gui = "italic" },
+        sym("@variable.parameter") { theme["@variable"], gui = "italic" },
         sym("@variable.builtin") { theme["@variable.builtin"], gui = "italic" },
       }
     end)
