@@ -456,10 +456,10 @@ local theme = lush(function(injected_functions)
     sym("@text.uri"){ fg = t.keyword, sp = t.tag, gui = "underline" }, -- Any URI like a link or email
 
     -- ============================================================
-    sym("@variable")({ Identifier }), -- e.g. `this` or `self`
-    sym("@variable.parameter")({ fg = t.parameter }),
-    sym("@variable.constant")({ Constant }),
-    sym("@variable.builtin")({ fg = t.parameter }),
+    sym("@variable"){ Identifier }, -- e.g. `this` or `self`
+    sym("@variable.parameter"){ fg = t.parameter },
+    sym("@variable.constant"){ Constant },
+    sym("@variable.builtin"){ fg = t.parameter },
 
     -- ============================================================
     sym("@tag")({ Tag }),
