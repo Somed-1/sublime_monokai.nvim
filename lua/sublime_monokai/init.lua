@@ -51,9 +51,11 @@ function M.load()
       return {
         Comment { theme.Comment, gui = "italic" },
         sym("@type") { theme["@type"], gui = "italic" },
-        sym("@type.builtin"){ theme["@type.builtin"], gui = "italic" },
-        sym("@variable.parameter")({ fg = t.parameter, gui = "italic" }),
-        sym("@variable.builtin")({ theme["@variable.builtin"], gui = "italic" }),
+        sym("@type.builtin") { theme["@type.builtin"], gui = "italic" },
+        sym("@field") { theme["@field"], gui = "italic" },
+        sym("@property") { theme["@property"], gui = "italic" },
+        sym("@variable.parameter") { fg = t.parameter, gui = "italic" },
+        sym("@variable.builtin") { theme["@variable.builtin"], gui = "italic" },
       }
     end)
   end
