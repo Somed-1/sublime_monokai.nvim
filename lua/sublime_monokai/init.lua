@@ -9,7 +9,7 @@ local defaultConfig = {
   transparent = false,
   italics = true,
   terminal = isGui,
-  guicursor = true,
+  guicursor = false,
 }
 
 M.config = defaultConfig
