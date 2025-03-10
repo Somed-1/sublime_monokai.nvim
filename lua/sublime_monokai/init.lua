@@ -15,7 +15,7 @@ local defaultConfig = {
 M.config = defaultConfig
 
 function M.setup(options)
-  M.config = vim.tbl_deep_extend("force", {}, defaultConfig, options or {})
+  M.config = vim.tbl_deep_extend("force", {}, defaultConfig, options)
 
   -- Set cursor color
   if M.config.guicursor then
