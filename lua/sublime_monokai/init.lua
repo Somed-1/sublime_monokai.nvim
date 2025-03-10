@@ -12,7 +12,7 @@ local defaultConfig = {
   guicursor = false,
 }
 
-M.config = defaultConfig
+-- M.config = defaultConfig
 
 function M.setup(options)
   print("Before merge:", vim.inspect(M.config))
