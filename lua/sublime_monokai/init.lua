@@ -12,12 +12,12 @@ local defaultConfig = {
   guicursor = false,
 }
 
--- M.config = defaultConfig
+M.config = defaultConfig
 
 function M.setup(options)
-  print("Before merge:", vim.inspect(M.config))
+  -- print("Before merge:", vim.inspect(M.config))
   M.config = vim.tbl_deep_extend("force", {}, defaultConfig, options or {})
-  print("After merge:", vim.inspect(M.config))
+  -- print("After merge:", vim.inspect(M.config))
 
   -- Set cursor color
   if M.config.guicursor then
