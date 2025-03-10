@@ -10,7 +10,6 @@ local defaultConfig = {
   italics = false,
   terminal = isGui,
   guicursor = false,
-  overrides = {},
 }
 
 M.config = defaultConfig
@@ -44,10 +43,6 @@ function M.load()
       }
     end)
   end
-
-  theme = lush.extends({ theme }).with(function()
-    return config.overrides
-  end)
 
   -- italics
   if M.config.italics == true then
