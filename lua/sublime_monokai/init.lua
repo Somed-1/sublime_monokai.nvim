@@ -7,9 +7,10 @@ local isGui = vim.fn.has("gui_running") == 1
 local defaultConfig = {
   style = "auto", -- auto | light | dark
   transparent = false,
-  italics = true,
+  italics = false,
   terminal = isGui,
   guicursor = false,
+  overrides = {},
 }
 
 M.config = defaultConfig
@@ -44,18 +45,22 @@ function M.load()
     end)
   end
 
+  theme = lush.extends({ theme }).with(function()
+    return config.overrides
+  end)
+
   -- italics
   if M.config.italics == true then
     theme = lush.extends({ theme }).with(function(injected_functions)
       local sym = injected_functions.sym
       return {
-        Comment { theme.Comment, gui = "italic" },
-        sym("@type") { theme["@type"], gui = "italic" },
-        sym("@type.builtin") { theme["@type.builtin"], gui = "italic" },
-        sym("@field") { theme["@field"], gui = "italic" },
-        sym("@property") { theme["@property"], gui = "italic" },
-        sym("@variable.parameter") { theme["@variable.parameter"], gui = "italic" },
-        sym("@variable.builtin") { theme["@variable.builtin"], gui = "italic" },
+        Comment({ theme.Comment, gui = "italic" }),
+        sym("@type")({ theme["@type"], gui = "italic" }),
+        sym("@type.builtin")({ theme["@type.builtin"], gui = "italic" }),
+        sym("@field")({ theme["@field"], gui = "italic" }),
+        sym("@property")({ theme["@property"], gui = "italic" }),
+        sym("@variable.parameter")({ theme["@variable.parameter"], gui = "italic" }),
+        sym("@variable.builtin")({ theme["@variable.builtin"], gui = "italic" }),
       }
     end)
   end
