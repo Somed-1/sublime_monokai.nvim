@@ -48,7 +48,7 @@ function M.load()
     config_t = M.config.light
   end
 
-  t = vim.tbl_deep_extend("force", {}, t, config_t or {})
+  -- t = vim.tbl_deep_extend("force", {}, t, config_t or {})
   local theme = make_theme(t, M.config)
   vim.g.colors_name = "sublime_monokai"
   package.loaded["lush_theme.sublime_monokai"] = nil
