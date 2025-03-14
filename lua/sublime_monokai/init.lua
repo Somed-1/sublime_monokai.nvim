@@ -49,7 +49,9 @@ function M.load()
     end)
   end
 
-  theme = lush.extends({ theme }).with(M.overrides)
+  theme = lush.extends({ theme }).with(function ()
+    return M.overrides
+  end)
 
   -- italics
   if M.config.italics == true then
