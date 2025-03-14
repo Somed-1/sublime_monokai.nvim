@@ -18,7 +18,7 @@ local defaultConfig = {
 M.config = defaultConfig
 
 -- Function to convert hex to HSL using Lush
-local function replace_hex_with_hsl(colors)
+function replace_hex_with_hsl(colors)
     local new_colors = {}
     for key, hex in pairs(colors) do
         new_colors[key] = lush.hsl(hex)  -- Convert hex to HSL using Lush
@@ -28,8 +28,8 @@ end
 
 function M.setup(options)
   M.config = vim.tbl_deep_extend("force", {}, defaultConfig, options or {})
-  M.config.dark = replace_hex_with_hsl(M.config.dark)
-  M.config.light = replace_hex_with_hsl(M.config.light)
+  -- M.config.dark = replace_hex_with_hsl(M.config.dark)
+  -- M.config.light = replace_hex_with_hsl(M.config.light)
 
   -- Set cursor color
   if M.config.guicursor then
