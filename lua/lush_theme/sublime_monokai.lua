@@ -1,7 +1,7 @@
 local lush = require("lush")
 local hsl = lush.hsl
 local config = require("sublime_monokai").config
-local make_theme = require("lua.lush_theme.make_theme")
+local make_theme = require("lush_theme.make_theme")
 
 local dark = {
   -- syntax
