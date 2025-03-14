@@ -60,7 +60,7 @@ function M.load()
   local t = require("lush_theme.sublime_monokai")
 
   local config_t = M.config.dark
-  if M.config.style == "light" then
+  if vim.o.background == "light" then
     config_t = M.config.light
   end
 
