@@ -1,5 +1,6 @@
 ---@diagnostic disable: undefined-global
 local lush = require("lush")
+local hsl = lush.hsl
 local M = {}
 
 local isGui = vim.fn.has("gui_running") == 1
@@ -20,8 +21,7 @@ M.config = defaultConfig
 local function replace_hex_with_hsl(colors)
     local new_colors = {}
     for key, hex in pairs(colors) do
-        new_colors[key] = lush.hsl(hex)  -- Convert hex to HSL using Lush
-
+        new_colors[key] = hsl(hex)  -- Convert hex to HSL using Lush
     end
     return new_colors
 end
@@ -31,6 +31,7 @@ function M.setup(options)
   M.config = vim.tbl_deep_extend("force", {}, defaultConfig, options or {})
   M.config.dark = replace_hex_with_hsl(M.config.dark)
   M.config.light = replace_hex_with_hsl(M.config.light)
+  print(type(M.config.dark["bg"]))
   -- print("After merge:", vim.inspect(M.config))
 
   -- Set cursor color
