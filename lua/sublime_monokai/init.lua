@@ -10,14 +10,26 @@ local defaultConfig = {
   italics = false,
   terminal = isGui,
   guicursor = false,
+  dark = {},
+  light = {},
+  overrides = {},
 }
 
 M.config = defaultConfig
 
+-- Function to convert hex to HSL using Lush
+local function replace_hex_with_hsl(colors)
+    local new_colors = {}
+    for key, hex in pairs(colors) do
+        new_colors[key] = lush.hsl(hex)  -- Convert hex to HSL using Lush
+    end
+    return new_colors
+end
+
 function M.setup(options)
-  -- print("Before merge:", vim.inspect(M.config))
   M.config = vim.tbl_deep_extend("force", {}, defaultConfig, options or {})
-  -- print("After merge:", vim.inspect(M.config))
+  M.config.dark = replace_hex_with_hsl(M.config.dark)
+  M.config.light = replace_hex_with_hsl(M.config.light)
 
   -- Set cursor color
   if M.config.guicursor then
@@ -28,6 +40,7 @@ end
 function M.load()
   local make_theme = require("lush_theme.make_theme").make_theme
   local t = require("lush_theme.sublime_monokai")
+  t = vim.tbl_deep_extend("force", {}, t, M.config)
   local theme = make_theme(t, M.config)
   vim.g.colors_name = "sublime_monokai"
   package.loaded["lush_theme.sublime_monokai"] = nil
@@ -47,6 +60,8 @@ function M.load()
       }
     end)
   end
+
+  theme = lush.extends({ theme }).with(overrides)
 
   -- italics
   if M.config.italics == true then
