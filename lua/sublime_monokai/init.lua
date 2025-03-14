@@ -31,7 +31,6 @@ function M.setup(options)
   M.config = vim.tbl_deep_extend("force", {}, defaultConfig, options or {})
   M.config.dark = replace_hex_with_hsl(M.config.dark)
   M.config.light = replace_hex_with_hsl(M.config.light)
-  print(M.config.dark["bg"])
   -- print("After merge:", vim.inspect(M.config))
 
   -- Set cursor color
@@ -43,6 +42,7 @@ end
 function M.load()
   local make_theme = require("lush_theme.make_theme").make_theme
   local t = require("lush_theme.sublime_monokai")
+  print(t.bg)
 
   local config_t = M.config.dark
   if M.config.style == "light" then
