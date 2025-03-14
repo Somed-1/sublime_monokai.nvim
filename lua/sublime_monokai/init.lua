@@ -31,7 +31,7 @@ function M.setup(options)
   M.config = vim.tbl_deep_extend("force", {}, defaultConfig, options or {})
   M.config.dark = replace_hex_with_hsl(M.config.dark)
   M.config.light = replace_hex_with_hsl(M.config.light)
-  print(type(M.config.dark["bg"]))
+  print(M.config.dark["bg"])
   -- print("After merge:", vim.inspect(M.config))
 
   -- Set cursor color
