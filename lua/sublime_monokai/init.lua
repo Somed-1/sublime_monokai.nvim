@@ -39,6 +39,21 @@ function M.setup(options)
   end
 end
 
+local function print_table(t, indent)
+    indent = indent or 0
+    local spacing = string.rep("  ", indent)
+
+    for k, v in pairs(t) do
+        if type(v) == "table" then
+            print(spacing .. k .. " = {")
+            print_table(v, indent + 1)
+            print(spacing .. "}")
+        else
+            print(spacing .. k .. " = " .. tostring(v))
+        end
+    end
+end
+
 function M.load()
   local make_theme = require("lush_theme.make_theme").make_theme
   local t = require("lush_theme.sublime_monokai")
@@ -49,7 +64,7 @@ function M.load()
   end
 
   t = vim.tbl_deep_extend("force", {}, t, config_t or {})
-  print(t)
+  print_table(t)
   local theme = make_theme(t, M.config)
   vim.g.colors_name = "sublime_monokai"
   package.loaded["lush_theme.sublime_monokai"] = nil
