@@ -44,11 +44,11 @@ function M.load()
   local t = require("lush_theme.sublime_monokai")
 
   local config_t = M.config.dark
-  if config.style == "light" then
+  if M.config.style == "light" then
     config_t = M.config.light
   end
 
-  -- t = vim.tbl_deep_extend("force", {}, t, config_t or {})
+  t = vim.tbl_deep_extend("force", {}, t, config_t or {})
   local theme = make_theme(t, M.config)
   vim.g.colors_name = "sublime_monokai"
   package.loaded["lush_theme.sublime_monokai"] = nil
