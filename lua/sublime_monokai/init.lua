@@ -26,6 +26,22 @@ local function replace_hex_with_hsl(colors)
     return new_colors
 end
 
+local function merge_tables(t1, t2)
+    local merged = {}
+
+    -- Copy all key-value pairs from t1
+    for k, v in pairs(t1) do
+        merged[k] = v
+    end
+
+    -- Copy all key-value pairs from t2 (overwrites t1 values if keys are the same)
+    for k, v in pairs(t2) do
+        merged[k] = v
+    end
+
+    return merged
+end
+
 function M.setup(options)
   -- print("Before merge:", vim.inspect(M.config))
   M.config = vim.tbl_deep_extend("force", {}, defaultConfig, options or {})
@@ -48,7 +64,8 @@ function M.load()
     config_t = M.config.light
   end
 
-  t = vim.tbl_deep_extend("force", {}, config_t, t)
+  -- t = vim.tbl_deep_extend("force", {}, t, config_t)
+  t = merge_tables(t, config_t)
   local theme = make_theme(t, M.config)
   vim.g.colors_name = "sublime_monokai"
   package.loaded["lush_theme.sublime_monokai"] = nil
