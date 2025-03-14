@@ -10,21 +10,21 @@ local defaultConfig = {
   italics = false,
   terminal = isGui,
   guicursor = false,
-  dark = {},
-  light = {},
-  overrides = {},
+  -- dark = {},
+  -- light = {},
+  -- overrides = {},
 }
 
 M.config = defaultConfig
 
--- Function to convert hex to HSL using Lush
-function replace_hex_with_hsl(colors)
-    local new_colors = {}
-    for key, hex in pairs(colors) do
-        new_colors[key] = lush.hsl(hex)  -- Convert hex to HSL using Lush
-    end
-    return new_colors
-end
+-- -- Function to convert hex to HSL using Lush
+-- function replace_hex_with_hsl(colors)
+--     local new_colors = {}
+--     for key, hex in pairs(colors) do
+--         new_colors[key] = lush.hsl(hex)  -- Convert hex to HSL using Lush
+--     end
+--     return new_colors
+-- end
 
 function M.setup(options)
   M.config = vim.tbl_deep_extend("force", {}, defaultConfig, options or {})
