@@ -5,7 +5,7 @@ local make_theme = require("lush_theme.make_theme")
 
 local dark = {
 	-- syntax
-	bg = hsl(70, 8, 15),                -- Monokai background
+	bg = hsl(69, 8, 15),                -- Monokai background
 	bgFloat = hsl("#383830"),           -- Floating window background
 	fg = hsl("#F8F8F2"),                -- Foreground text
 	cursor = hsl("#F8F8F0"),            -- Cursor color
