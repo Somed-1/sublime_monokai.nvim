@@ -7,7 +7,7 @@ local make_theme = require("lush_theme.make_theme")
 -- For brevity, here we manually substitute the HSL numeric values
 
 local dark = {
-	bg = hsl(240, 10, 15),
+	bg = hsl(70, 8, 15),
 
 	bgFloat = hsl(60, 10, 22),
 	fg = hsl(60, 100, 97),
