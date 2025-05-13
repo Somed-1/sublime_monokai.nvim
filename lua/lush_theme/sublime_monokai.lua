@@ -3,86 +3,79 @@ local hsl = lush.hsl
 local config = require("sublime_monokai").config
 local make_theme = require("lush_theme.make_theme")
 
--- Method 1: Using direct RGB values
 local dark = {
-
 	-- syntax
-	bg = hsl(39, 7, 14), -- Manually setting HSL values for #272822
-	bgFloat = hsl(60, 7, 17), -- #383830
-	fg = hsl(60, 30, 96), -- #F8F8F2
-	cursor = hsl(60, 60, 96), -- #F8F8F0
-
-	keyword = hsl(338, 95, 56), -- #F92672
-	comment = hsl(50, 11, 41), -- #75715E
-	punctuation = hsl(60, 30, 96), -- #F8F8F2
-	method = hsl(80, 76, 50), -- #A6E22E
-
-	type = hsl(177, 81, 64), -- #66D9EF
-	string = hsl(54, 70, 68), -- #E6DB74
-	number = hsl(266, 100, 75), -- #AE81FF
-	constant = hsl(266, 100, 75), -- #AE81FF
-	tag = hsl(338, 95, 56), -- #F92672
-	attribute = hsl(80, 76, 50), -- #A6E22E
-
-	property = hsl(31, 98, 58), -- #FD971F
-	parameter = hsl(31, 98, 58), -- #FD971F
-	label = hsl(177, 81, 64), -- #66D9EF
-	module = hsl(338, 95, 56), -- #F92672
-
+	bg = hsl("#272822"), -- Monokai background
+	bgFloat = hsl("#383830"), -- Floating window background
+	fg = hsl("#F8F8F2"), -- Foreground text
+	cursor = hsl("#F8F8F0"), -- Cursor color
+	keyword = hsl("#F92672"), -- Keywords (e.g., function, if, else)
+	comment = hsl("#75715E"), -- Comments
+	punctuation = hsl("#F8F8F2"), -- Punctuation
+	method = hsl("#A6E22E"), -- Functions/Methods
+	type = hsl("#66D9EF"), -- Types
+	string = hsl("#E6DB74"), -- Strings
+	number = hsl("#AE81FF"), -- Numbers
+	constant = hsl("#AE81FF"), -- Constants
+	tag = hsl("#F92672"), -- HTML/XML tags
+	attribute = hsl("#A6E22E"), -- Tag attributes
+	property = hsl("#FD971F"), -- Object properties
+	parameter = hsl("#FD971F"), -- Function parameters
+	label = hsl("#66D9EF"), -- Labels
+	module = hsl("#F92672"), -- Modules/Imports
 	-- workspace
-	primary = hsl(177, 81, 64), -- #66D9EF
-	selection = hsl(50, 11, 41), -- #75715E
-	search = hsl(50, 11, 41), -- #75715E
-	diffAdd = hsl(80, 76, 50), -- #A6E22E
-	diffChange = hsl(177, 81, 64), -- #66D9EF
-	diffDelete = hsl(338, 95, 56), -- #F92672
-	added = hsl(80, 76, 50), -- #A6E22E
-	changed = hsl(177, 81, 64), -- #66D9EF
-	deleted = hsl(338, 95, 56), -- #F92672
-	diffText = hsl(177, 81, 64), -- #66D9EF
-	error = hsl(338, 95, 56), -- #F92672
-	errorBG = hsl(60, 30, 96), -- #F8F8F2
-	warning = hsl(31, 98, 58), -- #FD971F
-	warningBG = hsl(60, 30, 96), -- #F8F8F2
-	info = hsl(177, 81, 64), -- #66D9EF
-	infoBG = hsl(39, 7, 14), -- #272822
-	hint = hsl(266, 100, 75), -- #AE81FF
-	mergeCurrent = hsl(54, 70, 68), -- #E6DB74
-	mergeCurrentLabel = hsl(60, 30, 96), -- #F8F8F2
-	mergeIncoming = hsl(54, 70, 68), -- #E6DB74
-	mergeIncomingLabel = hsl(60, 30, 96), -- #F8F8F2
-	mergeParent = hsl(50, 11, 41), -- #75715E
-	mergeParentLabel = hsl(60, 30, 96), -- #F8F8F2
-
-	copilot = hsl(80, 76, 50), -- #A6E22E
+	primary = hsl("#66D9EF"), -- Blue accent from the original palette
+	selection = hsl("#75715E"), -- Using the muted grey (comment color) for selection
+	search = hsl("#75715E"), -- Orange for search highlights
+	diffAdd = hsl("#A6E22E"), -- Green for additions
+	diffChange = hsl("#66D9EF"), -- Blue for changes
+	diffDelete = hsl("#F92672"), -- Red for deletions
+	added = hsl("#A6E22E"), -- Green for added items
+	changed = hsl("#66D9EF"), -- Blue for changed items
+	deleted = hsl("#F92672"), -- Red for deletions
+	diffText = hsl("#66D9EF"), -- Blue for diff text
+	error = hsl("#F92672"), -- Red for errors
+	errorBG = hsl("#F8F8F2"), -- Foreground as a contrasting background for errors
+	warning = hsl("#FD971F"), -- Orange for warnings
+	warningBG = hsl("#F8F8F2"), -- Using the foreground color for warning background
+	info = hsl("#66D9EF"), -- Blue for informational messages
+	infoBG = hsl("#272822"), -- Background for info (a neutral dark)
+	hint = hsl("#AE81FF"), -- Purple for hints
+	mergeCurrent = hsl("#E6DB74"), -- Yellow for merge current
+	mergeCurrentLabel = hsl("#F8F8F2"), -- Foreground for merge current label
+	mergeIncoming = hsl("#E6DB74"), -- Yellow for merge incoming
+	mergeIncomingLabel = hsl("#F8F8F2"), -- Foreground for merge incoming label
+	mergeParent = hsl("#75715E"), -- Muted grey for merge parent
+	mergeParentLabel = hsl("#F8F8F2"), -- Foreground for merge parent label
+	copilot = hsl("#A6E22E"), -- Green for Copilot
 
 	-- Terminal
-	terminalBlack = hsl(39, 7, 14), -- #272822
-	terminalRed = hsl(338, 95, 56), -- #F92672
-	terminalGreen = hsl(80, 76, 50), -- #A6E22E
-	terminalYellow = hsl(54, 70, 68), -- #E6DB74
-	terminalBlue = hsl(177, 81, 64), -- #66D9EF
-	terminalMagenta = hsl(266, 100, 75), -- #AE81FF
-	terminalCyan = hsl(181, 59, 52), -- #38CCD1
-	terminalWhite = hsl(60, 30, 96), -- #F8F8F2
-	terminalBrightBlack = hsl(50, 11, 41), -- #75715E
-	terminalBrightRed = hsl(302, 96, 69), -- #FD5FF1
-	terminalBrightGreen = hsl(74, 70, 62), -- #B6E354
-	terminalBrightYellow = hsl(39, 67, 71), -- #F4BF75
-	terminalBrightBlue = hsl(177, 81, 64), -- #66D9EF
-	terminalBrightMagenta = hsl(266, 100, 75), -- #AE81FF
-	terminalBrightCyan = hsl(168, 75, 79), -- #A1EFE4
-	terminalBrightWhite = hsl(0, 0, 100), -- #FFFFFF
+	terminalBlack = hsl("#272822"), -- Monokai dark background
+	terminalRed = hsl("#F92672"), -- Monokai pinkish red
+	terminalGreen = hsl("#A6E22E"), -- Monokai green
+	terminalYellow = hsl("#E6DB74"), -- Monokai yellow
+	terminalBlue = hsl("#66D9EF"), -- Monokai cyan-blue
+	terminalMagenta = hsl("#AE81FF"), -- Monokai purple
+	terminalCyan = hsl("#38CCD1"), -- Slightly brighter cyan
+	terminalWhite = hsl("#F8F8F2"), -- Monokai foreground
 
-	rainbowRed = hsl(338, 95, 56), -- #F92672
-	rainbowYellow = hsl(54, 70, 68), -- #E6DB74
-	rainbowBlue = hsl(177, 81, 64), -- #66D9EF
+	terminalBrightBlack = hsl("#75715E"), -- Muted grey for dim text
+	terminalBrightRed = hsl("#FD5FF1"), -- Brighter pink-red
+	terminalBrightGreen = hsl("#B6E354"), -- Brighter green
+	terminalBrightYellow = hsl("#F4BF75"), -- Brighter yellow
+	terminalBrightBlue = hsl("#66D9EF"), -- Same bright blue
+	terminalBrightMagenta = hsl("#AE81FF"), -- Bright purple
+	terminalBrightCyan = hsl("#A1EFE4"), -- Pale cyan
+	terminalBrightWhite = hsl("#FFFFFF"), -- Pure white for contrast
 
-	rainbowOrange = hsl(31, 98, 58), -- #FD971F
-	rainbowGreen = hsl(80, 76, 50), -- #A6E22E
-	rainbowViolet = hsl(266, 100, 75), -- #AE81FF
-	rainbowCyan = hsl(181, 59, 52), -- #38CCD1
-	rainbowIndigo = hsl(259, 98, 75), -- #9F7EFE
+	rainbowRed = hsl("#F92672"), -- Monokai red
+	rainbowYellow = hsl("#E6DB74"), -- Monokai yellow
+	rainbowBlue = hsl("#66D9EF"), -- Monokai blue
+	rainbowOrange = hsl("#FD971F"), -- Monokai orange
+	rainbowGreen = hsl("#A6E22E"), -- Monokai green
+	rainbowViolet = hsl("#AE81FF"), -- Monokai purple
+	rainbowCyan = hsl("#38CCD1"), -- Brighter cyan
+	rainbowIndigo = hsl("#9F7EFE"), -- Deep indigo
 }
 
 local light = {
