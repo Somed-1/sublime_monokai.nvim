@@ -3,170 +3,157 @@ local hsl = lush.hsl
 local config = require("sublime_monokai").config
 local make_theme = require("lush_theme.make_theme")
 
--- Function to convert hex to HSL using lush
--- For brevity, here we manually substitute the HSL numeric values
-
 local dark = {
-	bg = hsl(70, 8, 15),
+	-- syntax
+	bg = hsl(72, 9, 14), -- Monokai background
+	bgFloat = hsl("#383830"), -- Floating window background
+	fg = hsl("#F8F8F2"), -- Foreground text
+	cursor = hsl("#F8F8F0"), -- Cursor color
+	keyword = hsl("#F92672"), -- Keywords (e.g., function, if, else)
+	comment = hsl("#75715E"), -- Comments
+	punctuation = hsl("#F8F8F2"), -- Punctuation
+	method = hsl("#A6E22E"), -- Functions/Methods
+	type = hsl("#66D9EF"), -- Types
+	string = hsl("#E6DB74"), -- Strings
+	number = hsl("#AE81FF"), -- Numbers
+	constant = hsl("#AE81FF"), -- Constants
+	tag = hsl("#F92672"), -- HTML/XML tags
+	attribute = hsl("#A6E22E"), -- Tag attributes
+	property = hsl("#FD971F"), -- Object properties
+	parameter = hsl("#FD971F"), -- Function parameters
+	label = hsl("#66D9EF"), -- Labels
+	module = hsl("#F92672"), -- Modules/Imports
+	-- workspace
+	primary = hsl("#66D9EF"), -- Blue accent from the original palette
+	selection = hsl("#75715E"), -- Using the muted grey (comment color) for selection
+	search = hsl("#75715E"), -- Orange for search highlights
+	diffAdd = hsl("#A6E22E"), -- Green for additions
+	diffChange = hsl("#66D9EF"), -- Blue for changes
+	diffDelete = hsl("#F92672"), -- Red for deletions
+	added = hsl("#A6E22E"), -- Green for added items
+	changed = hsl("#66D9EF"), -- Blue for changed items
+	deleted = hsl("#F92672"), -- Red for deletions
+	diffText = hsl("#66D9EF"), -- Blue for diff text
+	error = hsl("#F92672"), -- Red for errors
+	errorBG = hsl("#F8F8F2"), -- Foreground as a contrasting background for errors
+	warning = hsl("#FD971F"), -- Orange for warnings
+	warningBG = hsl("#F8F8F2"), -- Using the foreground color for warning background
+	info = hsl("#66D9EF"), -- Blue for informational messages
+	infoBG = hsl("#272822"), -- Background for info (a neutral dark)
+	hint = hsl("#AE81FF"), -- Purple for hints
+	mergeCurrent = hsl("#E6DB74"), -- Yellow for merge current
+	mergeCurrentLabel = hsl("#F8F8F2"), -- Foreground for merge current label
+	mergeIncoming = hsl("#E6DB74"), -- Yellow for merge incoming
+	mergeIncomingLabel = hsl("#F8F8F2"), -- Foreground for merge incoming label
+	mergeParent = hsl("#75715E"), -- Muted grey for merge parent
+	mergeParentLabel = hsl("#F8F8F2"), -- Foreground for merge parent label
+	copilot = hsl("#A6E22E"), -- Green for Copilot
 
-	bgFloat = hsl(60, 10, 22),
-	fg = hsl(60, 100, 97),
-	cursor = hsl(60, 100, 97),
-	keyword = hsl(330, 100, 58),
-	comment = hsl(60, 10, 41),
-	punctuation = hsl(60, 100, 97),
-	method = hsl(89, 76, 55),
-	type = hsl(191, 83, 67),
-	string = hsl(49, 77, 68),
+	-- Terminal
+	terminalBlack = hsl("#272822"), -- Monokai dark background
+	terminalRed = hsl("#F92672"), -- Monokai pinkish red
+	terminalGreen = hsl("#A6E22E"), -- Monokai green
+	terminalYellow = hsl("#E6DB74"), -- Monokai yellow
+	terminalBlue = hsl("#66D9EF"), -- Monokai cyan-blue
+	terminalMagenta = hsl("#AE81FF"), -- Monokai purple
+	terminalCyan = hsl("#38CCD1"), -- Slightly brighter cyan
+	terminalWhite = hsl("#F8F8F2"), -- Monokai foreground
 
-	number = hsl(262, 100, 76),
-	constant = hsl(262, 100, 76),
-	tag = hsl(330, 100, 58),
-	attribute = hsl(89, 76, 55),
-	property = hsl(32, 98, 56),
-	parameter = hsl(32, 98, 56),
-	label = hsl(191, 83, 67),
-	module = hsl(330, 100, 58),
+	terminalBrightBlack = hsl("#75715E"), -- Muted grey for dim text
+	terminalBrightRed = hsl("#FD5FF1"), -- Brighter pink-red
+	terminalBrightGreen = hsl("#B6E354"), -- Brighter green
+	terminalBrightYellow = hsl("#F4BF75"), -- Brighter yellow
+	terminalBrightBlue = hsl("#66D9EF"), -- Same bright blue
+	terminalBrightMagenta = hsl("#AE81FF"), -- Bright purple
+	terminalBrightCyan = hsl("#A1EFE4"), -- Pale cyan
+	terminalBrightWhite = hsl("#FFFFFF"), -- Pure white for contrast
 
-	primary = hsl(191, 83, 67),
-	selection = hsl(60, 10, 41),
-	search = hsl(60, 10, 41),
-	diffAdd = hsl(89, 76, 55),
-	diffChange = hsl(191, 83, 67),
-	diffDelete = hsl(330, 100, 58),
-
-	added = hsl(89, 76, 55),
-	changed = hsl(191, 83, 67),
-	deleted = hsl(330, 100, 58),
-	diffText = hsl(191, 83, 67),
-	error = hsl(330, 100, 58),
-	errorBG = hsl(60, 100, 97),
-	warning = hsl(32, 98, 56),
-	warningBG = hsl(60, 100, 97),
-	info = hsl(191, 83, 67),
-	infoBG = hsl(60, 10, 15),
-	hint = hsl(262, 100, 76),
-	mergeCurrent = hsl(49, 77, 68),
-
-	mergeCurrentLabel = hsl(60, 100, 97),
-	mergeIncoming = hsl(49, 77, 68),
-	mergeIncomingLabel = hsl(60, 100, 97),
-	mergeParent = hsl(60, 10, 41),
-	mergeParentLabel = hsl(60, 100, 97),
-	copilot = hsl(89, 76, 55),
-
-	terminalBlack = hsl(240, 10, 15),
-	terminalRed = hsl(330, 100, 58),
-	terminalGreen = hsl(89, 76, 55),
-	terminalYellow = hsl(49, 77, 68),
-	terminalBlue = hsl(191, 83, 67),
-	terminalMagenta = hsl(262, 100, 76),
-	terminalCyan = hsl(182, 60, 53),
-	terminalWhite = hsl(60, 100, 97),
-
-	terminalBrightBlack = hsl(60, 10, 41),
-	terminalBrightRed = hsl(317, 100, 67),
-	terminalBrightGreen = hsl(75, 68, 60),
-	terminalBrightYellow = hsl(37, 87, 71),
-	terminalBrightBlue = hsl(191, 83, 67),
-	terminalBrightMagenta = hsl(262, 100, 76),
-	terminalBrightCyan = hsl(175, 52, 80),
-	terminalBrightWhite = hsl(0, 0, 100),
-
-	rainbowRed = hsl(330, 100, 58),
-	rainbowYellow = hsl(49, 77, 68),
-	rainbowBlue = hsl(191, 83, 67),
-	rainbowOrange = hsl(32, 98, 56),
-	rainbowGreen = hsl(89, 76, 55),
-	rainbowViolet = hsl(262, 100, 76),
-
-	rainbowCyan = hsl(182, 60, 53),
-	rainbowIndigo = hsl(256, 96, 65),
+	rainbowRed = hsl("#F92672"), -- Monokai red
+	rainbowYellow = hsl("#E6DB74"), -- Monokai yellow
+	rainbowBlue = hsl("#66D9EF"), -- Monokai blue
+	rainbowOrange = hsl("#FD971F"), -- Monokai orange
+	rainbowGreen = hsl("#A6E22E"), -- Monokai green
+	rainbowViolet = hsl("#AE81FF"), -- Monokai purple
+	rainbowCyan = hsl("#38CCD1"), -- Brighter cyan
+	rainbowIndigo = hsl("#9F7EFE"), -- Deep indigo
 }
 
 local light = {
-	bg = hsl(0, 0, 100),
-	bgFloat = hsl(0, 0, 94),
-	fg = hsl(240, 10, 15),
-	cursor = hsl(0, 0, 0),
-	keyword = hsl(334, 100, 42),
-	comment = hsl(0, 0, 65),
-	punctuation = hsl(45, 2, 30),
-	method = hsl(120, 100, 25),
-	type = hsl(207, 59, 49),
-	string = hsl(40, 99, 39),
-	number = hsl(277, 29, 51),
-	constant = hsl(277, 29, 51),
-	tag = hsl(334, 100, 42),
-	attribute = hsl(120, 100, 25),
-	property = hsl(24, 100, 42),
-	parameter = hsl(33, 100, 34),
-	label = hsl(207, 59, 49),
-	module = hsl(334, 100, 42),
+	-- syntax
+	bg = hsl("#FFFFFF"), -- Light background
+	bgFloat = hsl("#EFEFEF"), -- Floating window background
+	fg = hsl("#272822"), -- Dark foreground text
+	cursor = hsl("#000000"), -- Black cursor
+	keyword = hsl("#D7005F"), -- Deep pink for keywords
+	comment = hsl("#A6A6A6"), -- Soft grey for comments
+	punctuation = hsl("#4D4D4C"), -- Dark grey for punctuation
+	method = hsl("#008000"), -- Green for methods/functions
+	type = hsl("#268BD2"), -- Blue for types
+	string = hsl("#C18401"), -- Golden for strings
+	number = hsl("#8959A8"), -- Purple for numbers
+	constant = hsl("#8959A8"), -- Purple for constants
+	tag = hsl("#D7005F"), -- Pink for tags
+	attribute = hsl("#008000"), -- Green for tag attributes
+	property = hsl("#D75F00"), -- Orange for properties
+	parameter = hsl("#AF5F00"), -- Dark orange for parameters
+	label = hsl("#268BD2"), -- Blue for labels
+	module = hsl("#D7005F"), -- Pink for modules/imports
 
-	primary = hsl(207, 59, 49),
+	-- workspace
+	primary = hsl("#268BD2"), -- Blue accent
+	selection = hsl("#D7D7D7"), -- Soft grey for selection
+	search = hsl("#FFCC00"), -- Yellow for search highlights
+	diffAdd = hsl("#A6E22E"), -- Green for additions
+	diffChange = hsl("#268BD2"), -- Blue for changes
+	diffDelete = hsl("#F92672"), -- Red for deletions
+	added = hsl("#86B300"), -- Green for added items
+	changed = hsl("#268BD2"), -- Blue for changed items
+	deleted = hsl("#D7005F"), -- Pink for deletions
+	diffText = hsl("#268BD2"), -- Blue for diff text
 
-	selection = hsl(0, 0, 84),
+	error = hsl("#FF0000"), -- Red for errors
+	errorBG = hsl("#FFEBEB"), -- Light red background for errors
+	warning = hsl("#FD971F"), -- Orange for warnings
+	warningBG = hsl("#FFF5E5"), -- Light orange background
+	info = hsl("#268BD2"), -- Blue for info
+	infoBG = hsl("#E3F2FD"), -- Light blue background for info
+	hint = hsl("#8959A8"), -- Purple for hints
 
-	search = hsl(48, 100, 50),
+	mergeCurrent = hsl("#E6DB74"), -- Yellow for merge current
+	mergeCurrentLabel = hsl("#272822"), -- Dark text for labels
+	mergeIncoming = hsl("#E6DB74"), -- Yellow for merge incoming
+	mergeIncomingLabel = hsl("#272822"),
+	mergeParent = hsl("#A6A6A6"), -- Muted grey for merge parent
+	mergeParentLabel = hsl("#272822"),
 
-	diffAdd = hsl(89, 76, 55),
-	diffChange = hsl(207, 59, 49),
-	diffDelete = hsl(330, 100, 58),
-	added = hsl(75, 67, 44),
-	changed = hsl(207, 59, 49),
-	deleted = hsl(334, 100, 42),
-	diffText = hsl(207, 59, 49),
+	copilot = hsl("#008000"), -- Green for Copilot
 
-	error = hsl(0, 100, 50),
-	errorBG = hsl(0, 100, 94),
-	warning = hsl(32, 98, 56),
-	warningBG = hsl(38, 100, 95),
+	terminalBlack = hsl("#F8F8F2"), -- Light background
+	terminalRed = hsl("#F92672"), -- Monokai pinkish red
+	terminalGreen = hsl("#A6E22E"), -- Monokai green
+	terminalYellow = hsl("#E6DB74"), -- Monokai yellow
+	terminalBlue = hsl("#66D9EF"), -- Monokai cyan-blue
+	terminalMagenta = hsl("#AE81FF"), -- Monokai purple
+	terminalCyan = hsl("#38CCD1"), -- Bright cyan
+	terminalWhite = hsl("#272822"), -- Dark foreground for contrast
 
-	info = hsl(207, 59, 49),
-	infoBG = hsl(207, 76, 92),
+	terminalBrightBlack = hsl("#75715E"), -- Muted grey for dim text
+	terminalBrightRed = hsl("#FD5FF1"), -- Brighter pink-red
+	terminalBrightGreen = hsl("#B6E354"), -- Brighter green
+	terminalBrightYellow = hsl("#F4BF75"), -- Brighter yellow
+	terminalBrightBlue = hsl("#66D9EF"), -- Same bright blue
+	terminalBrightMagenta = hsl("#AE81FF"), -- Bright purple
+	terminalBrightCyan = hsl("#A1EFE4"), -- Pale cyan
+	terminalBrightWhite = hsl("#000000"), -- Pure black for sharp contrast
 
-	hint = hsl(277, 29, 51),
-
-	mergeCurrent = hsl(49, 77, 68),
-	mergeCurrentLabel = hsl(240, 10, 15),
-	mergeIncoming = hsl(49, 77, 68),
-	mergeIncomingLabel = hsl(240, 10, 15),
-	mergeParent = hsl(0, 0, 65),
-	mergeParentLabel = hsl(240, 10, 15),
-
-	copilot = hsl(120, 100, 25),
-
-	terminalBlack = hsl(60, 100, 97),
-
-	terminalRed = hsl(330, 100, 58),
-	terminalGreen = hsl(89, 76, 55),
-	terminalYellow = hsl(49, 77, 68),
-	terminalBlue = hsl(191, 83, 67),
-	terminalMagenta = hsl(262, 100, 76),
-
-	terminalCyan = hsl(182, 60, 53),
-	terminalWhite = hsl(240, 10, 15),
-
-	terminalBrightBlack = hsl(60, 10, 41),
-
-	terminalBrightRed = hsl(317, 100, 67),
-	terminalBrightGreen = hsl(75, 68, 60),
-	terminalBrightYellow = hsl(37, 87, 71),
-	terminalBrightBlue = hsl(191, 83, 67),
-	terminalBrightMagenta = hsl(262, 100, 76),
-	terminalBrightCyan = hsl(175, 52, 80),
-	terminalBrightWhite = hsl(0, 0, 0),
-
-	rainbowRed = hsl(330, 100, 58),
-	rainbowYellow = hsl(49, 77, 68),
-	rainbowBlue = hsl(191, 83, 67),
-	rainbowOrange = hsl(32, 98, 56),
-	rainbowGreen = hsl(89, 76, 55),
-	rainbowViolet = hsl(262, 100, 76),
-
-	rainbowCyan = hsl(182, 60, 53),
-	rainbowIndigo = hsl(256, 96, 65),
+	rainbowRed = hsl("#F92672"), -- Monokai red
+	rainbowYellow = hsl("#E6DB74"), -- Monokai yellow
+	rainbowBlue = hsl("#66D9EF"), -- Monokai blue
+	rainbowOrange = hsl("#FD971F"), -- Monokai orange
+	rainbowGreen = hsl("#A6E22E"), -- Monokai green
+	rainbowViolet = hsl("#AE81FF"), -- Monokai purple
+	rainbowCyan = hsl("#38CCD1"), -- Bright cyan
+	rainbowIndigo = hsl("#9F7EFE"), -- Deep indigo
 }
 
 local t = dark
