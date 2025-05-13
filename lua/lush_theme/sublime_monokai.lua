@@ -3,6 +3,10 @@ local hsl = lush.hsl
 local config = require("sublime_monokai").config
 local make_theme = require("lush_theme.make_theme")
 
+local function hex(r, g, b)
+	return hsl.from_rgb(r, g, b)
+end
+
 local dark = {
 	bg = hex(0x27, 0x28, 0x22),
 	bgFloat = hex(0x38, 0x38, 0x30),
